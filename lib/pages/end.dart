@@ -8,18 +8,46 @@ class EndPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: const Color.fromARGB(255, 241, 172, 70),
-      ),
-      home: Scaffold(
-        drawer: NavBar(),
-        appBar: AppBar(
-          title: const Text('Maps Sample App'),
-          elevation: 2,
+    return SafeArea(
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.orange.shade200,
+              Colors.orange.shade100,
+              Colors.orange.shade100,
+              Colors.white
+            ],
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+          ),
         ),
-        body: const Text("brb"),
+        child: Scaffold(
+          backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+          drawer: NavBar(),
+          appBar: AppBar(
+            title: const Text("End",
+                style: TextStyle(fontSize: 40, color: Colors.white)),
+            centerTitle: true,
+            backgroundColor: const Color.fromARGB(255, 241, 172, 70),
+          ),
+          body: SafeArea(
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              child: Container(
+                color: const Color.fromARGB(255, 241, 172, 70),
+                child: Column(
+                  children: [
+                    // ListView(
+                    //   children: ,
+                    // )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -17,7 +17,7 @@ class SettingButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onTap,
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.amber[200]),
+            backgroundColor: MaterialStateProperty.all(Colors.orange[300]),
           ),
           child: Text(distance, style: const TextStyle(fontSize: 15)),
         ),

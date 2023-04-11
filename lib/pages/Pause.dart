@@ -10,7 +10,24 @@ class PausePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return 
+    SafeArea(
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.orange.shade200,
+              Colors.orange.shade100,
+               Colors.orange.shade100,
+              Colors.white
+            ],
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+          ),
+        ),
+        child: Scaffold(
+        backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         drawer: NavBar(),
         appBar: AppBar(
           title: const Text("Pause",
@@ -65,6 +82,7 @@ class PausePage extends StatelessWidget {
               ],
             ),
           ],
+        ))
         ));
   }
 }

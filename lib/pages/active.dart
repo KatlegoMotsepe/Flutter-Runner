@@ -7,94 +7,115 @@ class ActivePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: NavBar(),
-      appBar: AppBar(
-        title: const Text("Active!",
-            style: TextStyle(fontSize: 40, color: Colors.white)),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 241, 172, 70),
-      ),
-      body: SafeArea(
-        child: Center(
-            child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(20),
-              child: Container(
-                constraints: const BoxConstraints(
-                  maxHeight: double.infinity,
-                ),
-                width: 400,
-                color: const Color.fromARGB(255, 241, 172, 70),
-                child: Column(
-                  children: const [
-                    SizedBox(height: 20),
-                    Text(
-                      "Distance :",
-                      style: TextStyle(fontSize: 20),
+    return SafeArea(
+      child: Container(
+        alignment: Alignment.center,
+       decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.orange.shade200,
+              Colors.orange.shade100,
+               Colors.orange.shade100,
+              Colors.white
+            ],
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+          ),
+        ),
+        child: Scaffold(
+          backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+          drawer: NavBar(),
+          appBar: AppBar(
+            title: const Text("Active!",
+                style: TextStyle(fontSize: 40, color: Colors.white)),
+            centerTitle: true,
+            backgroundColor: const Color.fromARGB(255, 241, 172, 70),
+          ),
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Center(
+                  child: Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    child: Container(
+                      constraints: const BoxConstraints(
+                        maxHeight: double.infinity,
+                      ),
+                      
+                      width:double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        children: const [
+                          SizedBox(height: 20),
+                          Text(
+                            "Distance :",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            "Put distance  here",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            "Time :",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            "Bring time here",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            "Current Speed : ",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            "Purt current speed here",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            "Current pace :",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            "Put the current pace  here",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(height: 20)
+                        ],
+                      ),
                     ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Put distance  here",
-                      style: TextStyle(fontSize: 18),
+                  ),
+                  const SizedBox(height: 50),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PausePage()),
+                      );
+                    },
+                  
+                    child: const Text(
+                      "Pause",
+                      style: TextStyle(color: Colors.white, fontSize: 50),
                     ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Time :",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Bring time here",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    SizedBox(height: 20),
-                    SizedBox(height: 20),
-                    Text(
-                      "Current Speed : ",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Purt current speed here",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Current pacee :",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Put the current pace  here",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    SizedBox(height: 20)
-                  ],
-                ),
-              ),
+                  ),
+                ],
+              )),
             ),
-            const SizedBox(height: 50),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const PausePage()),
-                );
-              },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                  const Color.fromARGB(255, 241, 172, 70),
-                ),
-              ),
-              child: const Text(
-                "Pause",
-                style: TextStyle(color: Colors.white, fontSize: 50),
-              ),
-            ),
-          ],
-        )),
+          ),
+        ),
       ),
     );
   }
