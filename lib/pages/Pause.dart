@@ -10,79 +10,75 @@ class PausePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    SafeArea(
-      child: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.orange.shade200,
-              Colors.orange.shade100,
-               Colors.orange.shade100,
-              Colors.white
-            ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-          ),
-        ),
-        child: Scaffold(
-        backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-        drawer: NavBar(),
-        appBar: AppBar(
-          title: const Text("Pause",
-              style: TextStyle(fontSize: 40, color: Colors.white)),
-          centerTitle: true,
-          backgroundColor: const Color.fromARGB(255, 241, 172, 70),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(20),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ActivePage()),
-                    );
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.green),
-                  ),
-                  child: const Text(
-                    "Resume",
-                    style: TextStyle(color: Colors.white, fontSize: 50),
-                  ),
+    return SafeArea(
+        child: Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(color: Colors.grey),
+            child: Scaffold(
+                backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                endDrawer: NavBar(),
+                appBar: AppBar(
+                  automaticallyImplyLeading: false,
+                  title: const Text("Pause",
+                      style: TextStyle(fontSize: 40, color: Colors.white)),
+                  centerTitle: true,
+                  backgroundColor: const Color.fromARGB(255, 241, 172, 70),
                 ),
-                const Text("   "),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MyHomePage(
-                                title: 'Home',
-                              )),
-                    );
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.red),
+                body: SingleChildScrollView(
+                  child: SafeArea(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(20),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const ActivePage()),
+                                );
+                              },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.green),
+                              ),
+                              child: const Text(
+                                "Resume",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 50),
+                              ),
+                            ),
+                            const Text("   "),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const MyHomePage(
+                                            title: 'Home',
+                                          )),
+                                );
+                              },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.red),
+                              ),
+                              child: const Text(
+                                "Stop",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 50),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  child: const Text(
-                    "Stop",
-                    style: TextStyle(color: Colors.white, fontSize: 50),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ))
-        ));
+                ))));
   }
 }

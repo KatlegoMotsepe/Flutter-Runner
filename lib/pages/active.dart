@@ -1,122 +1,264 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/end.dart';
+import 'package:flutter_application_1/pages/home.dart';
 import '../Widgets/NavBar.dart';
 import 'Pause.dart';
 
-class ActivePage extends StatelessWidget {
+class ActivePage extends StatefulWidget {
   const ActivePage({super.key});
 
   @override
+  State<ActivePage> createState() => _ActivePageState();
+}
+
+late SafeArea safeArea;
+
+class _ActivePageState extends State<ActivePage> {
+  bool pause = false;
+
+  @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        alignment: Alignment.center,
-       decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.orange.shade200,
-              Colors.orange.shade100,
-               Colors.orange.shade100,
-              Colors.white
-            ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
+    if (pause == false) {
+      safeArea = SafeArea(
+        child: Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/background.jpg'), fit: BoxFit.cover),
           ),
-        ),
-        child: Scaffold(
-          backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-          drawer: NavBar(),
-          appBar: AppBar(
-            title: const Text("Active!",
-                style: TextStyle(fontSize: 40, color: Colors.white)),
-            centerTitle: true,
-            backgroundColor: const Color.fromARGB(255, 241, 172, 70),
-          ),
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Center(
-                  child: Column(
+          child: Scaffold(
+            backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+            endDrawer: NavBar(),
+            appBar: AppBar(
+              automaticallyImplyLeading: false,
+              toolbarHeight: 100,
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(20),
-                    child: Container(
-                      constraints: const BoxConstraints(
-                        maxHeight: double.infinity,
-                      ),
-                      
-                      width:double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Column(
-                        children: const [
-                          SizedBox(height: 20),
-                          Text(
-                            "Distance :",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            "Put distance  here",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            "Time :",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            "Bring time here",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            "Current Speed : ",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            "Purt current speed here",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            "Current pace :",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            "Put the current pace  here",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          SizedBox(height: 20)
-                        ],
-                      ),
-                    ),
+                  Image.asset(
+                    'assets/running-man.png',
+                    height: 100,
+                    width: 100,
                   ),
-                  const SizedBox(height: 50),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const PausePage()),
-                      );
-                    },
-                  
-                    child: const Text(
-                      "Pause",
-                      style: TextStyle(color: Colors.white, fontSize: 50),
-                    ),
+                  const Text(
+                    "Active",
+                    style: TextStyle(fontSize: 40, color: Colors.white),
                   ),
                 ],
-              )),
+              ),
+              centerTitle: true,
+              backgroundColor: const Color.fromARGB(0, 241, 172, 70),
+            ),
+            body: SingleChildScrollView(
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/running-man.png',
+                        height: 250,
+                        width: 250,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(20),
+                        child: Container(
+                          constraints: const BoxConstraints(
+                            maxHeight: double.infinity,
+                          ),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.black26,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Column(
+                            children: const [
+                              SizedBox(height: 20),
+                              Text(
+                                "Time :",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                              SizedBox(height: 20),
+                              SizedBox(height: 20),
+                              Text(
+                                "Distance :",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                              SizedBox(height: 20),
+                              SizedBox(height: 20),
+                              Text(
+                                "Current Speed : ",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                              SizedBox(height: 20),
+                              SizedBox(height: 20),
+                              Text(
+                                "Current pace :",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                              SizedBox(height: 20),
+                              SizedBox(height: 20)
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            pause = true;
+                          });
+                        },
+                        child: Image(
+                          height: 150,
+                          width: 150,
+                          image: AssetImage("assets/pause.png"),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    } else {
+      safeArea = SafeArea(
+        child: Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/background.jpg'), fit: BoxFit.cover),
+          ),
+          child: Scaffold(
+            backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+            endDrawer: NavBar(),
+            appBar: AppBar(
+              automaticallyImplyLeading: false,
+              toolbarHeight: 100,
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/running-man.png',
+                    height: 100,
+                    width: 100,
+                  ),
+                  const Text(
+                    "Active",
+                    style: TextStyle(fontSize: 40, color: Colors.white),
+                  ),
+                ],
+              ),
+              centerTitle: true,
+              backgroundColor: const Color.fromARGB(0, 241, 172, 70),
+            ),
+            body: SingleChildScrollView(
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/running-man.png',
+                        height: 250,
+                        width: 250,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(20),
+                        child: Container(
+                          constraints: const BoxConstraints(
+                            maxHeight: double.infinity,
+                          ),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.black26,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Column(
+                            children: const [
+                              SizedBox(height: 20),
+                              Text(
+                                "Time :",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                              SizedBox(height: 20),
+                              SizedBox(height: 20),
+                              Text(
+                                "Distance :",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                              SizedBox(height: 20),
+                              SizedBox(height: 20),
+                              Text(
+                                "Current Speed : ",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                              SizedBox(height: 20),
+                              SizedBox(height: 20),
+                              Text(
+                                "Current pace :",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                              SizedBox(height: 20),
+                              SizedBox(height: 20)
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                pause = false;
+                              });
+                            },
+                            child: Image(
+                              height: 150,
+                              width: 150,
+                              image: AssetImage("assets/play.png"),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => EndPage(),
+                                ),
+                              );
+                            },
+                            child: Image(
+                              height: 150,
+                              width: 150,
+                              image: AssetImage("assets/stop.png"),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    return safeArea;
   }
 }

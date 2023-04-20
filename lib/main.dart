@@ -1,6 +1,7 @@
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:binder/binder.dart';
+import 'package:flutter_application_1/pages/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +17,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
-            primarySwatch: Colors.orange,
+            primarySwatch: Colors.deepOrange,
           ),
-          home: const MyHomePage(title: "Home")),
+          home: const LoginPage()),
     );
   }
 }

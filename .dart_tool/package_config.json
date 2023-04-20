@@ -194,6 +194,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_polyline_points",
+      "rootUri": "file:///C:/Users/BV-PC1/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_polyline_points-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///C:/src/flutter_windows_2.2.3-stable/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -231,7 +237,7 @@
     },
     {
       "name": "google_maps_flutter",
-      "rootUri": "file:///C:/Users/BV-PC1/AppData/Local/Pub/Cache/hosted/pub.dev/google_maps_flutter-2.2.4",
+      "rootUri": "file:///C:/Users/BV-PC1/AppData/Local/Pub/Cache/hosted/pub.dev/google_maps_flutter-2.2.5",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -378,6 +384,12 @@
       "rootUri": "file:///C:/Users/BV-PC1/AppData/Local/Pub/Cache/hosted/pub.dev/package_config-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "password_field_validator",
+      "rootUri": "file:///C:/Users/BV-PC1/AppData/Local/Pub/Cache/hosted/pub.dev/password_field_validator-0.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
     },
     {
       "name": "path",
@@ -620,7 +632,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-04-11T06:32:17.659288Z",
+  "generated": "2023-04-20T09:02:11.706814Z",
   "generator": "pub",
   "generatorVersion": "2.19.4"
 }
