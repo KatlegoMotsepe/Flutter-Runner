@@ -43,6 +43,17 @@ class NavBar extends StatelessWidget {
                     color: Colors.transparent,
                   ),
                 ),
+                  ListTile(
+                  leading: const Icon(Icons.home_rounded),
+                  title: const Text('Home'),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MyHomePage(
+                              title: "Home",
+                            )),
+                  ),
+                ),
                 ListTile(
                   leading: const Icon(Icons.history),
                   title: const Text('History'),
@@ -60,34 +71,13 @@ class NavBar extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => SettingsPage()),
                   ),
                 ),
-                ListTile(
-                  leading: const Icon(Icons.accessibility),
-                  title: const Text('Active'),
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ActivePage()),
-                  ),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.home_rounded),
-                  title: const Text('Home'),
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MyHomePage(
-                              title: "Home",
-                            )),
-                  ),
-                ),
+              
                 ListTile(
                   leading: const Icon(Icons.logout_outlined),
                   title: const Text('Log Out'),
                   onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const LoginPage(
-                              
-                            )),
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
                   ),
                 ),
               ],

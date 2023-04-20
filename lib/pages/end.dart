@@ -84,45 +84,83 @@ class _EndPageState extends State<EndPage> {
                 bottom: 20,
                 left: 0,
                 right: 0,
-                child: GestureDetector(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('Success'), // Title of the dialog
-                          content: Text('Entry saved'), // Content of the dialog
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const MyHomePage(
-                                            title: 'Home',
-                                          )),
-                                ); // Close the dialog
-                              },
-                              child: Text('OK'), // Button text
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Total Distance :",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             ),
                           ],
-                        );
-                      },
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      height: 150,
-                      width: 150,
-                      decoration: const BoxDecoration(
-                        color: Colors.black54,
-                        image: DecorationImage(
-                          fit: BoxFit.contain,
-                          image: AssetImage("assets/save.png"),
                         ),
-                      ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Average Pace :",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  backgroundColor: Colors.green[300],
+                                  title: Text(
+                                    'Success',
+                                    style: TextStyle(color: Colors.white),
+                                  ), // Title of the dialog
+                                  content: Text('Entry saved',
+                                      style: TextStyle(
+                                          color: Colors
+                                              .white)), // Content of the dialog
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const MyHomePage(
+                                                    title: 'Home',
+                                                  )),
+                                        ); // Close the dialog
+                                      },
+                                      child: Text('OK'), // Button text
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          child: Image(
+                            height: 100,
+                            width: 100,
+                            image: AssetImage("assets/save.png"),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
