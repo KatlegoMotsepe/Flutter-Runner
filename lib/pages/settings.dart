@@ -33,18 +33,8 @@ class _SettingsPageState extends State<SettingsPage> {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             toolbarHeight: 100,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/running-man.png',
-                  height: 100,
-                  width: 100,
-                ),
-                const Text('Settings',
-                    style: TextStyle(fontSize: 40, color: Colors.white)),
-              ],
-            ),
+            title: const Text('Settings',
+                style: TextStyle(fontSize: 40, color: Colors.white)),
             centerTitle: true,
             backgroundColor: const Color.fromARGB(0, 241, 172, 70),
           ),
@@ -55,6 +45,11 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    Image.asset(
+                      'assets/running-man.png',
+                      height: 200,
+                      width: 200,
+                    ),
                     const SizedBox(height: 20),
                     Container(
                       width: double.infinity,

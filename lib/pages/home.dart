@@ -53,8 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     Image.asset(
                       'assets/running-man.png',
-                      height: 250,
-                      width: 250,
+                      height: 200,
+                      width: 200,
                     ),
                     const SizedBox(height: 20),
                     Container(

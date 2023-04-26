@@ -259,10 +259,10 @@ class _LoginPageState extends State<LoginPage> {
                   children: <Widget>[
                     Image.asset(
                       'assets/running-man.png',
-                      height: 250,
-                      width: 250,
+                      height: 200,
+                      width: 200,
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                     Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(20),
@@ -371,15 +371,19 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 40,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape:
+                                CircleBorder(), // Set the shape to CircleBorder
+                          ),
                           onPressed: logIn,
                           child: Padding(
-                            padding: const EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(40.0),
                             child: Text(
                               "Log In",
                               style:
@@ -388,9 +392,13 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape:
+                                CircleBorder(), // Set the shape to CircleBorder
+                          ),
                           onPressed: register,
                           child: Padding(
-                            padding: const EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(40.0),
                             child: Text(
                               "Register",
                               style:

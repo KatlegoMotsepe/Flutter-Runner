@@ -32,19 +32,9 @@ class _ActivePageState extends State<ActivePage> {
             appBar: AppBar(
               automaticallyImplyLeading: false,
               toolbarHeight: 100,
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/running-man.png',
-                    height: 100,
-                    width: 100,
-                  ),
-                  const Text(
-                    "Active",
-                    style: TextStyle(fontSize: 40, color: Colors.white),
-                  ),
-                ],
+              title: const Text(
+                "Active",
+                style: TextStyle(fontSize: 40, color: Colors.white),
               ),
               centerTitle: true,
               backgroundColor: const Color.fromARGB(0, 241, 172, 70),
@@ -58,8 +48,8 @@ class _ActivePageState extends State<ActivePage> {
                     children: [
                       Image.asset(
                         'assets/running-man.png',
-                        height: 250,
-                        width: 250,
+                        height: 200,
+                        width: 200,
                       ),
                       Container(
                         padding: const EdgeInsets.all(20),
@@ -142,20 +132,12 @@ class _ActivePageState extends State<ActivePage> {
             appBar: AppBar(
               automaticallyImplyLeading: false,
               toolbarHeight: 100,
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/running-man.png',
-                    height: 100,
-                    width: 100,
-                  ),
+              title: 
                   const Text(
                     "Active",
                     style: TextStyle(fontSize: 40, color: Colors.white),
                   ),
-                ],
-              ),
+              
               centerTitle: true,
               backgroundColor: const Color.fromARGB(0, 241, 172, 70),
             ),
@@ -168,8 +150,8 @@ class _ActivePageState extends State<ActivePage> {
                     children: [
                       Image.asset(
                         'assets/running-man.png',
-                        height: 250,
-                        width: 250,
+                        height: 200,
+                        width: 200,
                       ),
                       Container(
                         padding: const EdgeInsets.all(20),
