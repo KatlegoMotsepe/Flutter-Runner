@@ -2,8 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/home.dart';
+
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import '../Widgets/NavBar.dart';
+import 'package:location/location.dart';
 
 // ignore: must_be_immutable
 class EndPage extends StatefulWidget {
@@ -14,29 +18,81 @@ class EndPage extends StatefulWidget {
 }
 
 class _EndPageState extends State<EndPage> {
-  static const CameraPosition _belgiumCampus = CameraPosition(
-    target: LatLng(-25.685098, 28.130163),
+  final Location location = Location();
+  final Set<Polyline> polyline = {};
+  List<LatLng> route = [];
+
+  late GoogleMapController _mapController;
+
+  double _dist = 0;
+  late String _displayTime;
+  late int _time;
+  late int _lastTime;
+  double _speed = 0;
+  double _avgSpeed = 0;
+  int _speedCounter = 0;
+
+  final StopWatchTimer _stopWatchTimer = StopWatchTimer();
+
+  @override
+  void dispose() async {
+    super.dispose();
+    await _stopWatchTimer.dispose();
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    _mapController = controller;
+    double appendDist;
+
+    location.onLocationChanged.listen((event) {
+      LatLng loc = LatLng(event.latitude as double, event.longitude as double);
+      _mapController.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(target: loc, zoom: 16.5)));
+
+      if (route.length > 0) {
+        appendDist = Geolocator.distanceBetween(route.last.latitude,
+            route.last.longitude, loc.latitude, loc.longitude);
+        _dist = _dist + appendDist;
+        int timeDuration = (_time - _lastTime);
+
+        if (timeDuration != 0) {
+          _speed = (appendDist / (timeDuration / 100)) * 3.6;
+          if (_speed != 0) {
+            _avgSpeed = _avgSpeed + _speed;
+            _speedCounter++;
+          }
+        }
+      }
+      _lastTime = _time;
+      route.add(loc);
+
+      polyline.add(Polyline(
+          polylineId: PolylineId(event.toString()),
+          visible: true,
+          points: route,
+          width: 5,
+          startCap: Cap.roundCap,
+          endCap: Cap.roundCap,
+          color: Colors.deepOrange));
+
+      setState(() {});
+    });
+  }
+
+  static const CameraPosition somewhere = CameraPosition(
+    target: LatLng(0, 0),
     zoom: 16.5,
   );
 
-  static const CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
-
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
-
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
-    double deviceWidth = MediaQuery.of(context).size.height;
+
     return SafeArea(
       child: Container(
         alignment: Alignment.center,
@@ -70,14 +126,11 @@ class _EndPageState extends State<EndPage> {
               Container(
                 height: deviceHeight,
                 child: GoogleMap(
+                  polylines: polyline,
                   zoomControlsEnabled: false,
-                  markers: {
-                    // Marker(markerId: )
-                  },
-                  initialCameraPosition: _belgiumCampus,
-                  onMapCreated: (GoogleMapController controller) {
-                    _controller.complete(controller);
-                  },
+                  initialCameraPosition: somewhere,
+                  onMapCreated: _onMapCreated,
+                  myLocationEnabled: true,
                 ),
               ),
               Positioned(
@@ -106,6 +159,16 @@ class _EndPageState extends State<EndPage> {
                         ),
                         const SizedBox(
                           height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text((_dist / 1000).toStringAsFixed(2),
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.white)),
+                          ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,

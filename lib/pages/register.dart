@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Services/services.dart';
 import 'package:flutter_application_1/model/Validations.dart';
 
 import 'package:flutter_application_1/pages/login.dart';
@@ -21,7 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
   bool hide = true;
   bool hide1 = true;
 
-  void register() {
+  Future<void> register() async {
     if (email_controller.text.trim().isEmpty ||
         name_controller.text.trim().isEmpty ||
         password_controller.text.trim().isEmpty ||
@@ -185,6 +186,66 @@ class _RegisterPageState extends State<RegisterPage> {
         );
       },
     );
+
+    var validRegister = await Services().signUp(
+      name_controller.text.trim(),
+      surname_controller.text.trim(),
+      email_controller.text.trim(),
+      passwordagain_controller.text.trim(),
+    );
+
+    if (validRegister == true) {
+      Navigator.pop(context);
+
+      // ignore: use_build_context_synchronously
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return AlertDialog(
+            content: const Text("You have registered successfully"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    // ignore: use_build_context_synchronously
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()));
+                  },
+                  child: const Text('Ok'))
+            ],
+          );
+        },
+      );
+
+      email_controller.clear();
+      password_controller.clear();
+      passwordagain_controller.clear();
+      name_controller.clear();
+      surname_controller.clear();
+    } else { 
+      Navigator.pop(context);
+      // ignore: use_build_context_synchronously
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return AlertDialog(
+              backgroundColor: Colors.green[300],
+            content: Text("Registration unsuccessful.", style: TextStyle(color: Colors.white),),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    // ignore: use_build_context_synchronously
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Ok'))
+            ],
+          );
+        },
+      );
+    }
   }
 
   Icon passwordIcon = Icon(Icons.remove_red_eye);

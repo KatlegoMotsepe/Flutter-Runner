@@ -1,0 +1,8 @@
+https://localhost:7237/api/Entries_/getHistory
+
+https://localhost:7237/api/Entries_/getSpecificHistory/
+
+https://localhost:7237/api/User_/loginUser
+
+https://localhost:7237/api/User_/registerUser
+

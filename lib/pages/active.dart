@@ -1,6 +1,7 @@
 import 'package:dp_stopwatch/dp_stopwatch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/end.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../Widgets/NavBar.dart';
 
@@ -27,8 +28,24 @@ class _ActivePageState extends State<ActivePage> {
   Row isPaised() {
     if (pause == false) {
       row = Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          GestureDetector(
+            onTap: () {
+              stopwatchViewModel.start?.call();
+            },
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              height: 150,
+              width: 150,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.contain,
+                  image: AssetImage("assets/play.png"),
+                ),
+              ),
+            ),
+          ),
           GestureDetector(
             onTap: () {
               stopwatchViewModel.pause?.call();
@@ -116,15 +133,10 @@ class _ActivePageState extends State<ActivePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    GestureDetector(
-                      onDoubleTap: () {
-                        stopwatchViewModel.start?.call();
-                      },
-                      child: Image.asset(
-                        'assets/running-man.png',
-                        height: 200,
-                        width: 200,
-                      ),
+                    Image.asset(
+                      'assets/running-man.png',
+                      height: 200,
+                      width: 200,
                     ),
                     Container(
                       padding: const EdgeInsets.all(20),

@@ -85,23 +85,22 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     const SizedBox(height: 50),
-                    GestureDetector(
-                      onTap: () {
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: CircleBorder(), // Set the shape to CircleBorder
+                      ),
+                      onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const ActivePage()),
                         );
                       },
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        height: 150,
-                        width: 150,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            fit: BoxFit.contain,
-                            image: AssetImage("assets/play.png"),
-                          ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(40.0),
+                        child: Text(
+                          "Let's Get\n  Active",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
                       ),
                     ),
